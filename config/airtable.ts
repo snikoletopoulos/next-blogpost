@@ -11,17 +11,16 @@ export default function airtableSavePost({
 	notes,
 }) {
 	base("Blogs").create(
-		[
-			{
-				fields: { name, email, blogurl, feedurl, notes },
-			},
+		{
+			fields: { name, email, blogurl, feedurl, notes },
+		},
 		],
 		err => {
 			if (err) {
 				console.log(err);
 				return false;
 			}
-		}
-	);
+			return true;
+		},
+	]);
 }
-
