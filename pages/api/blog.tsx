@@ -1,9 +1,10 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import type { NextApiResponse, NextApiRequest } from "next";
 
-export default function handler(req, res) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
 	// Drops any method that is not POST
 	if (req.method !== "POST") {
-		res.statusCode(405).end();
+		res.statusCode = 405;
+		res.end();
 		return;
 	}
 
