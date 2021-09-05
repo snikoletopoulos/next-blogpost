@@ -8,6 +8,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 		return;
 	}
 
-	const { name, email, password, feedurl, blogurl, notes } = req.body;
-  
+	const { name, email, blogurl, feedurl, notes } = req.body;
 }

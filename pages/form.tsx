@@ -9,7 +9,7 @@ export default function Form() {
 	const [blogurl, setBlogurl] = useState("");
 	const [feedurl, setFeedurl] = useState("");
 	const [notes, setNotes] = useState("");
-	const [response, setResponse] = useState("initialState");
+	const [response, setResponse] = useState("");
 
 	const handleSubmit = async event => {
 		event.preventDefault();
