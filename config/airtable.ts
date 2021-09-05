@@ -10,14 +10,18 @@ export default function airtableSavePost({
 	feedurl,
 	notes,
 }) {
-	base("Blogs").create([
-		{
-			fields: { name, email, blogurl, feedurl, notes },
-		},
-	],
-  err => {
-    console.log(err);
-    return false;
-  }
-  );
+	base("Blogs").create(
+		[
+			{
+				fields: { name, email, blogurl, feedurl, notes },
+			},
+		],
+		err => {
+			if (err) {
+				console.log(err);
+				return false;
+			}
+		}
+	);
 }
+
