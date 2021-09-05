@@ -1,4 +1,4 @@
-const Airtable = require("airtable");
+import Airtable, { Error } from "airtable";
 const base = new Airtable({ apiKey: process.env.API_KEY }).base(
 	process.env.BASE_ID
 );
