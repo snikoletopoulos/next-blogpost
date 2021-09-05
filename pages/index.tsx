@@ -22,7 +22,7 @@ const Home = props => {
 							Latest posts
 						</h1>
 						<p>
-							<Link href="/form">
+							<Link href="/form" passHref>
 								<p className="underline cursor-pointer mt-2">
 									<a>Add a new blog</a>
 								</p>

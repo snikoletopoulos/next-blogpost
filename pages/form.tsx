@@ -50,7 +50,7 @@ export default function Form() {
 							Add new blog
 						</h1>
 						<p>
-							<Link href="/">
+							<Link href="/" passHref>
 								<p className="underline cursor-pointer mt-2">
 									<a>Back</a>
 								</p>
