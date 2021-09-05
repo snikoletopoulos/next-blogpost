@@ -9,4 +9,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 	}
 
 	const { name, email, blogurl, feedurl, notes } = req.body;
+interface Post {
+	name: string;
+	email: string;
+	blogurl: string;
+	feedurl: string;
+	notes: string;
+	approved?: boolean;
 }
