@@ -3,7 +3,7 @@ const base = new Airtable({ apiKey: process.env.API_KEY }).base(
 	process.env.API_BASE
 );
 
-export default function pushPostToAirtable({
+export default function airtableSavePost({
 	name,
 	email,
 	blogurl,
