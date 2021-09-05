@@ -122,7 +122,7 @@ export default function Form() {
 										</label>
 										<div className="rounded-md shadow-sm">
 											<textarea
-												rows="3"
+												rows={3}
 												className="form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
 												placeholder="Anything you want to tell us!"
 												value={notes}
