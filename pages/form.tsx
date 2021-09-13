@@ -11,7 +11,7 @@ export default function Form() {
 	const [notes, setNotes] = useState("");
 	const [response, setResponse] = useState("");
 
-	const handleSubmit = async event => {
+	const handleSubmit = async (event: React.FormEvent): Promise<void> => {
 		event.preventDefault();
 
 		try {

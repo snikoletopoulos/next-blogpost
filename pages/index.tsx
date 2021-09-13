@@ -3,7 +3,7 @@ import Head from "next/head";
 import Parser from "rss-parser";
 import Link from 'next/link';
 
-const Home = props => {
+const Home = (props: HomeProps): JSX.Element => {
 	return (
 		<>
 			<Head>
@@ -51,7 +51,7 @@ const Home = props => {
 											</thead>
 											<tbody className="bg-white">
 												{props.posts
-													.sort((a, b) => new Date(b.date) - new Date(a.date))
+													.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
 													.map((value: Post, index: number) => {
 														return (
 															<tr key={index}>
@@ -108,6 +108,16 @@ export async function getStaticProps(context) {
 			posts,
 		},
 	};
+}
+
+interface HomeProps {
+	posts: [
+  {
+		title: string;
+		link: string;
+		date: string;
+		name: string;
+	}];
 }
 
 export default Home;
