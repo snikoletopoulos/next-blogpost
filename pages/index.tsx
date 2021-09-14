@@ -93,10 +93,12 @@ const Home = (props: HomeProps): JSX.Element => {
 	);
 };
 
-export async function getStaticProps() {
-	const parcer = new Parser();
+export default Home;
 
-	const data = await parcer.parseURL("https://flaviocopes.com/index.xml");
+export async function getStaticProps() {
+	const parser = new Parser();
+
+	const data = await parser.parseURL("https://flaviocopes.com/index.xml");
 
 	const posts = data.items.slice(0, 10).map(item => {
 		return {
@@ -138,5 +140,3 @@ interface HomeProps {
 		}
 	];
 }
-
-export default Home;
