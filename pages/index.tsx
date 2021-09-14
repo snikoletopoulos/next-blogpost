@@ -51,7 +51,11 @@ const Home = (props: HomeProps): JSX.Element => {
 											</thead>
 											<tbody className="bg-white">
 												{props.posts
-													.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+													.sort(
+														(a, b) =>
+															Number(new Date(b.date)) -
+															Number(new Date(a.date))
+													)
 													.map((value: Post, index: number) => {
 														return (
 															<tr key={index}>
@@ -89,7 +93,7 @@ const Home = (props: HomeProps): JSX.Element => {
 	);
 };
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
 	const parcer = new Parser();
 
 	const data = await parcer.parseURL("https://flaviocopes.com/index.xml");
@@ -112,12 +116,13 @@ export async function getStaticProps(context) {
 
 interface HomeProps {
 	posts: [
-  {
-		title: string;
-		link: string;
-		date: string;
-		name: string;
-	}];
+		{
+			title: string;
+			link: string;
+			date: string;
+			name: string;
+		}
+	];
 }
 
 export default Home;
