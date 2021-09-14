@@ -107,6 +107,20 @@ export async function getStaticProps() {
 		};
 	});
 
+	const feeds = await getPosts();
+
+	for (const feed of feeds) {
+		const data = await parser.parseURL(feed.feedurl);
+		data.items.slice(0, 10).forEach(item => {
+			posts.push({
+				title: item.title,
+				link: item.link,
+				date: item.isoDate,
+				name: feed.name,
+			});
+		});
+	}
+
 	return {
 		props: {
 			posts,

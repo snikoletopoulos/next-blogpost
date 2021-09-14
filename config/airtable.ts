@@ -15,4 +15,18 @@ export const savePost = ({ name, email, blogurl, feedurl, notes }) => {
 			return true;
 		}
 	);
-}
+};
+
+export const getPosts = async () => {
+	const records = await base("Blogs").select({ view: "Grid view" }).firstPage();
+	return records
+		.filter(record => !!record.get("approved"))
+		.map(record => {
+			return {
+				id: record.id,
+				name: record.get("name"),
+				blogurl: record.get("blogurl"),
+				feedurl: record.get("feedurl"),
+			};
+		});
+};
