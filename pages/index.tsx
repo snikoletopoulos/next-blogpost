@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Parser from "rss-parser";
-import Link from 'next/link';
+import Link from "next/link";
 
 const Home = (props: HomeProps): JSX.Element => {
 	return (
@@ -131,12 +131,5 @@ export async function getStaticProps() {
 }
 
 interface HomeProps {
-	posts: [
-		{
-			title: string;
-			link: string;
-			date: string;
-			name: string;
-		}
-	];
+	posts: Post[];
 }
