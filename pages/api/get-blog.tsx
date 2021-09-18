@@ -1,5 +1,7 @@
-//@ts-ignore
-import { savePost} from "/config/airtable";
+// @ts-expect-error
+import { savePost } from "@/utils/airtable";
+// @ts-expect-error
+import type { Post } from "@/utils/airtable";
 import type { NextApiResponse, NextApiRequest } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -9,21 +11,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 		res.end();
 		return;
 	}
-	const { name, email, blogurl, feedurl, notes } = req.body;
-	const post: Post = { name, email, blogurl, feedurl, notes };
 
-	if (savePost(post)) {
+	const { name, email, blogurl, feedurl, notes } = req.body;
+
+	const post: Post = { name, email, blogurl, feedurl, notes };
+	let saved;
+	if (savePost(post, res)) {
 		res.json({ success: true });
 	} else {
-		res.json({ failed: true });
+		console.log("hi");
+		res.json({ failed: true, test: saved, teseta: "hi" });
 	}
-}
-
-interface Post {
-	name: string;
-	email: string;
-	blogurl: string;
-	feedurl: string;
-	notes: string;
-	approved?: boolean;
 }
