@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Router from "next/router";
+import axios from "axios";
 
 export default function Form() {
 	const [name, setName] = useState("");
@@ -15,18 +16,20 @@ export default function Form() {
 		event.preventDefault();
 
 		try {
-			const response = await fetch("/api/blog", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ name, email, blogurl, feedurl, notes }),
+			const response = await axios.post("/api/get-blog", {
+				name,
+				email,
+				blogurl,
+				feedurl,
+				notes,
 			});
-
-			const json = await response.json();
-			if (json.success) {
+			console.log(response);
+			// const response = await response.response();
+			if (response) {
 				alert("Thank you for submitting your blog!");
-				Router.push("/");
+				// Router.push("/");
 			} else {
-				setResponse(json.success);
+				setResponse(response.data);
 			}
 		} catch (err) {
 			setResponse("An error occured while submitting the form");
